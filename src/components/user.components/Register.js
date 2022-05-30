@@ -5,11 +5,14 @@ import {Container, Form, Button,Col,Row} from 'react-bootstrap'
 import {Link,Redirect} from 'react-router-dom'
 import axios from 'axios'
 import { fontSize } from "@mui/system";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box'; 
 
 const Register = () => {
   const [ribInput,setRibInput] = useState(false);
   const [typeChoice,setTypeChoice] = useState('Auto');
   const [redirect,setRedirect] = useState('');
+  const [loading,setLoading] = useState(false);
     const [formData, setFormData] = useState({
       username: '',
       nom: '',
@@ -62,7 +65,7 @@ const Register = () => {
 
     const onSubmit = async e => {
       e.preventDefault();
-     
+     setLoading(true);
       console.log(formData);
       //On remet par default les error vide
       const errmail = document.querySelector('.emailerror');
@@ -86,40 +89,49 @@ const Register = () => {
         const errmail = document.querySelector('.emailerror');
         errmail.innerText = 'Veuillez rentrer votre email!';
         errmail.style.color = 'red';
+        setLoading(false);
       } else if(password === ''){
         const passerr = document.querySelector('.password1error');
         passerr.innerText = 'Veuillez rentrer un mot de passe';
         passerr.style.color = 'red';
+        setLoading(false);
       } else if(password2 === ''){
         const passerr2 = document.querySelector('.password2error');
         passerr2.innerText = 'Veuillez retaper votre mot de passe pour vérification';
+        setLoading(false);
         passerr2.style.color = 'red';
       } else if(ville === ''){
         const vilerr = document.querySelector('.villeerror');
         vilerr.innerText = 'Veuillez rentrer la ville de votre agence';
         vilerr.style.color = 'red';
+        setLoading(false);
       } else if(rue === '' && typeChoice === 'Gardien' ||rue === '' && typeChoice=== 'Particulier' ){
         const rueerr = document.querySelector('.rueerror');
         rueerr.innerText = 'Veuillez rentrer un nom de rue correct';
         rueerr.style.color = 'red';
+        setLoading(false);
       } else if(numero === '' && typeChoice === 'Gardien' || numero === '' && typeChoice === 'Particulier'){
         const numerr = document.querySelector('.numerror');
         numerr.innerText = 'Veuillez rentrer un numéro correct';
         numerr.style.color = 'red';
+        setLoading(false);
         console.log(numero);
       } else if(postal === '' && typeChoice === 'Gardien' || postal === '' &&typeChoice == 'Particulier'){
         const postalerr = document.querySelector('.postalerror');
         postalerr.innerText = 'Veuillez renseigner le code postal de votre agence';
         postalerr.style.color = 'red';
+        setLoading(false);
       }
       else if(password !== password2){
         const passerr2 = document.querySelector('.password2error');
         passerr2.innerText = 'Les mots de passe ne correspondent pas';
         passerr2.style.color = 'red';
+        setLoading(false);
       } else if(password.length < 6 ){
         const passerr = document.querySelector('.password1error');
         passerr.innerText = 'Votre mot de passe doit contenir au minimum 6 caractère';
         passerr.style.color = 'red';
+        setLoading(false);
       } 
       //on envoi vers le back
       else {
@@ -127,6 +139,7 @@ const Register = () => {
         await axios.post('https://demenapptest.herokuapp.com/api/user/register', {
           formData
         }).then(res => {
+          setLoading(false);
           console.log(res.data);
           if(res.data === 'userFinded'){
             const errmail = document.querySelector('.emailerror');
@@ -311,6 +324,7 @@ return(
   <Form.Group className="mb-3" controlId="formBasicCheckbox">
     <Form.Check type="checkbox" label="En cliquant ici vous acceptez les conditions général"  value={check} onChange={e => onChange(e)} required/>
   </Form.Group>
+  {loading ? <CircularProgress/>: console.log('')}
   <Button className="buttonType"  type="submit">
     S'enregistrer
   </Button>
