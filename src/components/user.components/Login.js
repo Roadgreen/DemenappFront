@@ -4,6 +4,8 @@ import './Login.css';
 import {Container, Form, Button} from 'react-bootstrap'
 import {Link, Redirect,useHistory} from 'react-router-dom'
 import axios from "axios";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box'; 
 
 
 const Login = () => {
@@ -12,6 +14,7 @@ const Login = () => {
   const [redirect,setRedirect] = useState('');
   const [username,setUsername] =useState('');
   const [admin,setAdmin] = useState(false);
+  const [loading,setLoading] = useState(false);
   let history = useHistory();
   function isAdmin(){
     history.push('/DashboardAdmin/index');
@@ -20,6 +23,7 @@ const Login = () => {
 
   
     const onSubmit = async e => {
+      setLoading(true);
       e.preventDefault();
 
       const emailerr = document.querySelector('.emailerror');
@@ -39,6 +43,7 @@ const Login = () => {
         await axios.post('https://demenapptest.herokuapp.com/api/user/login', {
           email,password
         }).then(res => {
+          setLoading(false);
           if(res.data === 'passError'){
             const passerror = document.querySelector('.passerror');
       passerror.innerText = 'Le mot de passe ne correspond pas';
@@ -85,7 +90,7 @@ return(
    
         
    <Form onSubmit={onSubmit}>
-       
+       {loading ? <CircularProgress/> : console.log('')}
       
          <Form.Group className="mb-3" controlId="email">
     <Form.Label>Email</Form.Label>
