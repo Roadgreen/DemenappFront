@@ -136,12 +136,7 @@ const Register = () => {
       //on envoi vers le back
       else {
         
-        await axios.post('https://demenapptest.herokuapp.com/api/user/register',{headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token, Authorization, Accept,charset,boundary,Content-Length"
-      }}, {
+        await axios.post('https://demenapptest.herokuapp.com/api/user/register', {
           formData
         }).then(res => {
           setLoading(false);
