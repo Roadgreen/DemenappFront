@@ -330,7 +330,7 @@ return(
   </Button>
 </Form>
  
-{redirect === `true` ? <Redirect to={`/`}></Redirect> : console.log('')}
+{redirect === `true` ? <Redirect signup={true} to={`/`}></Redirect> : console.log('')}
     </Container>
     
 )
