@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import './Register.css';
 import logo from '../../img/logo-demenhouse.png'
 import {Container, Form, Button,Col,Row} from 'react-bootstrap'
-import {Link,Redirect} from 'react-router-dom'
+import {Link,Redirect,useHistory} from 'react-router-dom'
 import axios from 'axios'
 import { fontSize } from "@mui/system";
 import CircularProgress from '@mui/material/CircularProgress';
@@ -11,7 +11,7 @@ import Box from '@mui/material/Box';
 const Register = () => {
   const [ribInput,setRibInput] = useState(false);
   const [typeChoice,setTypeChoice] = useState('Auto');
-  const [redirect,setRedirect] = useState('');
+  //const [redirect,setRedirect] = useState('');
   const [loading,setLoading] = useState(false);
     const [formData, setFormData] = useState({
       username: '',
@@ -62,6 +62,8 @@ const Register = () => {
     const {username,nom,prenom,email,tel,password,password2,ville,rue,numero,postal,check,Rib,Cheque,type,nameOf} = formData;
 
     const onChange = e => setFormData({...formData, [e.target.name]: e.target.value});
+
+    const {push} = useHistory();
 
     const onSubmit = async e => {
       e.preventDefault();
@@ -146,7 +148,13 @@ const Register = () => {
             errmail.innerText = 'Cette email est déjà pris par un autre utilisateur. Veuillez indiquer un autre email.';
             errmail.style.color = 'grey';
           } else{
-            setRedirect('true')
+            //setRedirect('true')
+            push({
+              pathname: '/',
+              state: {
+                signup: true
+              }
+            })
           }
         }).catch(err => {
           console.log(err);
@@ -330,7 +338,7 @@ return(
   </Button>
 </Form>
  
-{redirect === `true` ? <Redirect signup={true} to={`/`}></Redirect> : console.log('')}
+
     </Container>
     
 )

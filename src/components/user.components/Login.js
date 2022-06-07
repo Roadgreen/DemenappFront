@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useEffect, useState} from "react";
 import logo from '../../img/logo-demenapp.svg'
 import './Login.css';
 import {Container, Form, Button} from 'react-bootstrap'
@@ -8,7 +8,13 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box'; 
 
 
+
 const Login = () => {
+const historys = useHistory();
+
+const State = historys.location;
+  console.log(State)
+   const [signup,setSignup] = useState('')
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [redirect,setRedirect] = useState('');
@@ -19,7 +25,14 @@ const Login = () => {
   function isAdmin(){
     history.push('/DashboardAdmin/index');
   }
-
+  
+  useEffect(()=>{
+    if(State.state === undefined){
+      setSignup(false)
+    } else {
+      setSignup(true)
+    }
+  },[])
 
   
     const onSubmit = async e => {
@@ -106,8 +119,9 @@ return(
   <Link to="/register"><Button variant="outline-dark" className='registerLink'  >
       Pas encore inscrit?
   </Button></Link> <br/>
- 
-  
+ {signup ? <p className="register">Votre Inscription est bien prise en compte!<br/>Nous traitons votre demande d'inscription.</p> : console.log('')}
+
+
  
   <Button variant="primary" type="submit">
     Connection
