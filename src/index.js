@@ -13,7 +13,7 @@ const Root = () => (
   <BrowserRouter>
   <Switch>
     <Route exact path='/' component={App}></Route>
-    <Route exact path='/qr?/' component={App}></Route>
+    <Route exact path='/qr/' component={App}></Route>
     <Route exact path='/register' component={Register}></Route>
     <Route exact path='/login' component={Login}></Route>
     <Route exact path='/api/user/:username' component={UserDash}></Route>
