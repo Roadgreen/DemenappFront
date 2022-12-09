@@ -18,7 +18,7 @@ const onLoad = async ()=>{
 
   
 
-    await axios.get('https://demenapptest.herokuapp.com/client/search', {
+    await axios.get('https://demenapp.alwaysdata.net/client/search', {
         params: {
             userId
         }

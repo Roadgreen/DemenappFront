@@ -67,7 +67,7 @@ function DashboardMenu(props) {
 
 const checkNotif = async () => {
  
-  await axios.get('https://demenapptest.herokuapp.com/api/user/notif',{
+  await axios.get('https://demenapp.alwaysdata.net/api/user/notif',{
     
       params: {
           ID: idAgent

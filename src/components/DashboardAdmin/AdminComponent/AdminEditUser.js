@@ -19,7 +19,7 @@ const AdminEditUser =  (props) => {
   const [info,setInfo] = useState(false)
 
   const search = async () => {
-    await axios.post('https://demenapptest.herokuapp.com/api/user/userInfo',{
+    await axios.post('https://demenapp.alwaysdata.net/api/user/userInfo',{
       id, info
     }).then(res => {
       setUsername(res.data.username)
@@ -68,7 +68,7 @@ useEffect(() => {
       const onSubmit = async (e)=>{
       e.preventDefault();
         
- await axios.post('https://demenapptest.herokuapp.com/api/user/userInfo',{
+ await axios.post('https://demenapp.alwaysdata.net/api/user/userInfo',{
    username,nom,prenom,email,tel,ville,postalCode,numero,rue,id
  }).then(res => { 
    console.log(res.data);

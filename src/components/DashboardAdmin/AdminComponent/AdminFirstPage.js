@@ -20,7 +20,7 @@ const AdminFirstPage = (props) => {
    const [linkTwo,setLinkTwo] = useState();
    
 const handleSubmit = async ()=>{
-    await axios.post('https://demenapptest.herokuapp.com/api/user/postimgAdmin',{
+    await axios.post('https://demenapp.alwaysdata.net/api/user/postimgAdmin',{
       imgBig: link,
       imgSmall: linkTwo
     }).then().catch(err => {console.log(err)})

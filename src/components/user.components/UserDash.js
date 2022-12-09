@@ -18,7 +18,7 @@ const UserDash = () => {
    
 
 const userAuth = async () => {
-   await axios.get("https://demenapptest.herokuapp.com/api/user/isAuth",{
+   await axios.get("https://demenapp.alwaysdata.net/api/user/isAuth",{
         headers: {
             "x-access-token": localStorage.getItem("token"),
         }

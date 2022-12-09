@@ -31,7 +31,7 @@ const DashboardIndex = (props) => {
   const [linkB,setLinkB] = useState('');
 
       const onLoad = async ()=>{
-await axios.get('https://demenapptest.herokuapp.com/api/user/imgGet').then(res=>{
+await axios.get('https://demenapp.alwaysdata.net/api/user/imgGet').then(res=>{
   console.log(res.data.imgBig);
   if(res.data === "nothing"){
 
@@ -41,7 +41,7 @@ await axios.get('https://demenapptest.herokuapp.com/api/user/imgGet').then(res=>
   }
   console.log(linkA);
 }).catch(err=>console.log(err))
-  await axios.get('https://demenapptest.herokuapp.com/client/gain',{
+  await axios.get('https://demenapp.alwaysdata.net/client/gain',{
     params: {
       userId
     }
@@ -59,7 +59,7 @@ for(var i = 0; i < res.data.ficheGainP.length; i++){
 setGainP(sumGainP);
   })
 
-        await axios.get('https://demenapptest.herokuapp.com/client/search', {
+        await axios.get('https://demenapp.alwaysdata.net/client/search', {
             params: {
                 userId
             }

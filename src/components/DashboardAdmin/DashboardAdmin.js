@@ -92,13 +92,13 @@ const [isActive,setIsActive] = useState(props.id);
   let history = useHistory();
   
   const info = async () => {
-      await axios.get('https://demenapptest.herokuapp.com/api/user/info',{}).then(res => {
+      await axios.get('https://demenapp.alwaysdata.net/api/user/info',{}).then(res => {
           setUserWait(res.data.userWait);
           setUserVal(res.data.userVal);
           
 
       });
-      await axios.get('https://demenapptest.herokuapp.com/client/info',{}).then(res => {
+      await axios.get('https://demenapp.alwaysdata.net/client/info',{}).then(res => {
           const Fiche = res.data;
           console.log(Fiche.ficheWait.length);
           setFicheNew(Fiche.ficheNew);

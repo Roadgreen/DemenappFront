@@ -21,7 +21,7 @@ const [gainP,setGainP] = useState(0);
 
     const onLoad = async ()=>{
 
-await axios.get('https://demenapptest.herokuapp.com/client/gain',{
+await axios.get('https://demenapp.alwaysdata.net/client/gain',{
   params: {
     userId
   }
@@ -39,7 +39,7 @@ sumGainP+= res.data.ficheGainP[i].gainPotentiel;
 setGainP(sumGainP);
 })
 
-      await axios.get('https://demenapptest.herokuapp.com/client/search', {
+      await axios.get('https://demenapp.alwaysdata.net/client/search', {
           params: {
               userId
           }

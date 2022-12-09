@@ -21,7 +21,7 @@ import Geocode from "react-geocode";
 
 const AdminUser = (props) => {
 const DeleteUser = async (id) => {
-  await axios.post('https://demenapptest.herokuapp.com/api/user/delete',{
+  await axios.post('https://demenapp.alwaysdata.net/api/user/delete',{
     id
   }).then(res => {
     console.log(res.data);
@@ -30,7 +30,7 @@ const DeleteUser = async (id) => {
 }
 
 const ValidateUser = async (id) => {
-  await axios.get('https://demenapptest.herokuapp.com/api/user/validate',{
+  await axios.get('https://demenapp.alwaysdata.net/api/user/validate',{
     params: {
       ID: id,
       Val: true
@@ -47,7 +47,7 @@ const EditUser = async (id) => {
 }
 
 const checkUser = async () =>{
-  await axios.get('https://demenapptest.herokuapp.com/api/user/info',{}).then(res => {
+  await axios.get('https://demenapp.alwaysdata.net/api/user/info',{}).then(res => {
     console.log(res.data)
 setUserWait(res.data.userWait)
 setUserVal(res.data.userVal)
