@@ -31,7 +31,7 @@ function DashboardCreate() {
     const userBef = localStorage.getItem('username');
     const user =  JSON.parse(userBef);
     const idAgent = user._id;
-    await axios.post('http://demenapp.alwaysdata.net/client/create', {
+    await axios.post('https://demenapp.alwaysdata.net/client/create', {
       formData, idAgent
     }).then(res => {
       if(res.data === 'clientFinded'){

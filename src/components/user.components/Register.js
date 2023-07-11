@@ -138,7 +138,7 @@ const Register = () => {
       //on envoi vers le back
       else {
         
-        await axios.post('http://demenapp.alwaysdata.net/api/user/register', {
+        await axios.post('https://demenapp.alwaysdata.net/api/user/register', {
           formData
         }).then(res => {
           setLoading(false);

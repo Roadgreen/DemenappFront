@@ -19,7 +19,7 @@ const AdminEditClient =  (props) => {
 
   const search = async () => {
 
-    await axios.get('http://demenapp.alwaysdata.net/client/editSearch',{
+    await axios.get('https://demenapp.alwaysdata.net/client/editSearch',{
       params: {
         ID: id
       }
@@ -77,7 +77,7 @@ useEffect(() => {
       const onSubmit = async (e)=>{
         e.preventDefault();
         console.log(gain,state,gainPotentiel,nom,prenom,email,tel,ville,postalCode)
- await axios.post('http://demenapp.alwaysdata.net/client/editSubmit',{
+ await axios.post('https://demenapp.alwaysdata.net/client/editSubmit',{
    gain,state,gainPotentiel,nom,prenom,email,tel,ville,postalCode,numero,rue,id
  }).then(res => { 
    console.log(res.data);

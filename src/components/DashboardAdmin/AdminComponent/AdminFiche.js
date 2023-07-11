@@ -21,7 +21,7 @@ const AdminFiche = () => {
   const [ficheNew, setFicheNew] = useState([]);
   const [ficheVal, setFicheVal] = useState([]);
   const ficheSearch = async ()=>{
-    await axios.get('http://demenapp.alwaysdata.net/client/info',{}).then(
+    await axios.get('https://demenapp.alwaysdata.net/client/info',{}).then(
       res=>{setFicheWait(res.data.ficheWait); setFicheNew(res.data.ficheNew);setFicheVal(res.data.ficheVal);}
     )
   }
@@ -36,7 +36,7 @@ const AdminFiche = () => {
    const [parId,setParId] = useState('');
   
    const DeleteFiche = async (id) => {
-      await axios.get('http://demenapp.alwaysdata.net/client/delete', {
+      await axios.get('https://demenapp.alwaysdata.net/client/delete', {
         params:{
           ID: id
         }
