@@ -22,7 +22,7 @@ const [notif,setNotif] = useState([]);
 
 const getNotif = async ()=> {
   
-    await axios.get('https://demenapp.alwaysdata.net/api/user/notif', {
+    await axios.get('http://demenapp.alwaysdata.net/api/user/notif', {
         params: {
             ID: idAgent
         }
@@ -34,7 +34,7 @@ const getNotif = async ()=> {
 }
 
 const squeeznotif = async () => {
-  await axios.get('https://demenapp.alwaysdata.net/api/user/notifsqueeze',{
+  await axios.get('http://demenapp.alwaysdata.net/api/user/notifsqueeze',{
     params: {
       ID: idAgent
     }
